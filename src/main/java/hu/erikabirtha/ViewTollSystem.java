@@ -4,8 +4,6 @@ import java.util.Date;
 import java.util.Scanner;
 
 public class ViewTollSystem {
-
-
     ContollerTollSystem contollerTollSystem;
     public Scanner scanner = new Scanner(System.in);
 
@@ -15,7 +13,9 @@ public class ViewTollSystem {
 
     public void showVehicleMotorwayVignetteHistory() {
 
-        ViewModelTollSystem viewModelTollSystem = new ViewModelTollSystem("","", 0, new Date(), new Date(), new Date(), "");
+        ViewModelTollSystem viewModelTollSystem =
+                new ViewModelTollSystem("","",
+                "",0, new Date(), new Date(), new Date());
 
         System.out.println("\n "  + "registration number car motorway usage history:");
 
@@ -26,6 +26,8 @@ public class ViewTollSystem {
         System.out.println(registrationNumber + "ez a reg number");
         System.out.println(viewModelTollSystem + "ez a viewmodel A ViewTollsytemben.........");
         System.out.println("\n\n");
+        System.out.println("\n " + "valid from:" );
+        System.out.println(registrationNumber );
 //        String vehicleCategory = scanner.next();
 //        viewModelTollSystem.vehicleCategory = vehicleCategory;
 //
@@ -41,7 +43,6 @@ public class ViewTollSystem {
 //        viewModelTollSystem.validTo = validTo;
 //        Date dateOfPurchase = scanner.next();
 //        viewModelTollSystem.dateOfPurchase = dateOfPurchase;
-        System.out.println("\n " + "valid from:");
 
     }
 

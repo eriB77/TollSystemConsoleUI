@@ -14,9 +14,10 @@ public class PresenterTollSystem implements DisplayTollSystem {
     //régi interaptor kommunikál vele
     //implementál  Display
 
-    //VehicleRegisterInteractor vehicleRegisterInteractor;
+    VehicleRegisterInteractor vehicleRegisterInteractor;
     private ViewTollSystem viewTollSystem;
     private ViewModelTollSystem viewModelTollSystem;
+
 
     public PresenterTollSystem(ViewTollSystem viewTollSystem) {
         this.viewTollSystem = viewTollSystem;
@@ -27,7 +28,9 @@ public class PresenterTollSystem implements DisplayTollSystem {
     public void dislayMotorwayVignette(String json) {
         //Json parser
         //view meghívása
-        ViewModelTollSystem viewModelTollSystem = new ViewModelTollSystem("","", 0, new Date(), new Date(), new Date(), "");
+        ViewModelTollSystem viewModelTollSystem =
+                new ViewModelTollSystem("","",
+                "",0, new Date(), new Date(), new Date());
         try {
             JSONObject jsonObject = new JSONObject(json);
             viewModelTollSystem.registrationNumber = jsonObject.getString("registrationNumber");
@@ -35,10 +38,12 @@ public class PresenterTollSystem implements DisplayTollSystem {
             viewModelTollSystem.motorwayVignetteType = jsonObject.getString("motorwayVignetteType");
             viewModelTollSystem.price = jsonObject.getInt("price");
 
+
         } catch (JSONException e) {
             throw new RuntimeException(e);
         }
         viewTollSystem.showVehicleMotorwayVignetteHistory();
+        System.out.println(json + "json from presenter");
     }
 
     public void displayError(String errorMessage) {
@@ -49,5 +54,11 @@ public class PresenterTollSystem implements DisplayTollSystem {
     public void displayOk(String okMessage) {
         viewTollSystem.showOkMessage(okMessage);
     }
+
+    @Override
+    public void findVehicleByRegistrationNumber(String jsonObject) {
+
+    }
+
 
 }
